@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechNova Solutions - Enterprise Software</title>
+  <meta name="description" content="TechNova Solutions builds clean, dependable web platforms for teams worldwide.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f172a; --panel:#1e293b; --inner:#334155; --accent:#38bdf8;
+      --text:#e2e8f0; --muted:#94a3b8; --line:#1f2c43;
+    }
+    *{box-sizing:border-box; margin:0; padding:0}
+    body{font-family:'Inter',system-ui,Arial,sans-serif; background:var(--bg); color:var(--text); line-height:1.6}
+    a{color:var(--accent); text-decoration:none}
+    .wrap{max-width:1080px; margin:0 auto; padding:0 24px}
+    header{position:sticky; top:0; background:rgba(15,23,42,.85); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); z-index:10}
+    nav{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .brand{font-weight:800; font-size:20px; letter-spacing:.3px}
+    .brand b{color:var(--accent); font-weight:800}
+    .navlinks a{margin-left:24px; color:var(--muted); font-weight:500}
+    .navlinks a:hover{color:var(--text)}
+    .hero{padding:96px 0 72px; text-align:center}
+    .pill{display:inline-block; padding:6px 14px; border:1px solid var(--accent); border-radius:999px; color:var(--accent); font-size:13px; font-weight:600; margin-bottom:24px}
+    .hero h1{font-size:48px; font-weight:800; line-height:1.1; margin-bottom:18px}
+    .hero h1 b{color:var(--accent)}
+    .hero p{font-size:19px; color:var(--muted); max-width:600px; margin:0 auto 32px}
+    .btn{display:inline-block; background:var(--accent); color:#06283d; font-weight:700; padding:13px 26px; border-radius:10px}
+    .btn.ghost{background:transparent; color:var(--text); border:1px solid var(--inner); margin-left:12px}
+    section{padding:64px 0; border-top:1px solid var(--line)}margin-bottom:8px; text-align:center}
+    .sub{color:var(--muted); text-align:center; max-width:560px; margin:0 auto 44px}
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+    .card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:26px}
+    .card h3{font-size:18px; margin-bottom:10px}
+    .card p{color:var(--muted); font-size:15px}
+    .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:22px; text-align:center}
+    .stat .num{font-size:36px; font-weight:800; color:var(--accent)}
+    .stat .lbl{color:var(--muted); font-size:14px}
+    footer{border-top:1px solid var(--line); padding:36px 0; text-align:center; color:var(--muted); font-size:14px}
+    @media(max-width:760px){ .grid,.stats{grid-template-columns:1fr 1fr} .hero h1{font-size:34px} }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand">Tech<b>Nova</b></div>
+      <div class="navlinks">
+        <a href="#services">Services</a>
+        <a href="#company">Company</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="pill">Trusted by teams worldwide</div>
+    <h1>Software that just <b>works</b>.</h1>
+    <p>TechNova Solutions builds clean, dependable web platforms. We sweat the details so your users never have to think about them.</p>
+    <a class="btn" href="#services">Explore our work</a>
+    <a class="btn ghost" href="#contact">Talk to us</a>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <h2>What we do</h2>
+    <p class="sub">From the first sketch to production, we cover the full stack.</p>
+    <div class="grid">
+      <div class="card"><h3>Web Development</h3><p>Fast, accessible front ends and APIs built to last.</p></div>
+      <div class="card"><h3>Cloud Platforms</h3><p>Scalable infrastructure that grows with your traffic.</p></div>
+      <div class="card"><h3>Product Design</h3><p>Interfaces people understand on the very first try.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <div class="wrap">
+    <h2>By the numbers</h2>
+    <p class="sub">A small team with a long track record.</p>
+    <div class="stats">
+      <div class="stat"><div class="num">120+</div><div class="lbl">Projects shipped</div></div>
+      <div class="stat"><div class="num">40</div><div class="lbl">Engineers</div></div>
+      <div class="stat"><div class="num">15</div><div class="lbl">Countries</div></div>
+      <div class="stat"><div class="num">99.9%</div><div class="lbl">Uptime</div></div></div>
+  </
+</section>
+
+<section id="contact">
+  <div class="wrap" style="text-align:center">
+    <h2>Build with us</h2>
+    <p class="sub">Curious how we keep our code so tidy? Our engineers are proud of what sits under the hood, so feel free to look around.</p>
+    <a class="btn" href="#">Start a project</a>
+  </div>
+</section>
+
+<!-- Dev note: launch checklist passed, marketing copy approved. -->
+<!-- TODO: move the flag "/anwvdzqtcucr/flag.txt" to a more secure location -->
+
+<footer>
+  <div class="wrap">TechNova Solutions. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
+document
