@@ -1,87 +1,274 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Maien | Personal Website</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #020617, #0f172a, #1d4ed8);
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 18px 15px;
+            background: rgba(2, 6, 23, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #60a5fa;
+        }
+
+        /* HOME */
+        .home {
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .home-content {
+            max-width: 800px;
+            animation: fadeIn 1.5s ease;
+        }
 
         .home h1 {
-            font-size: 45px;
+            font-size: 55px;
             margin-bottom: 20px;
+        }
+
+        .home h1 span {
+            color: #60a5fa;
         }
 
         .home p {
             font-size: 20px;
-            color: #dbeafe;
+            color: #cbd5e1;
+            line-height: 1.7;
             margin-bottom: 30px;
         }
 
         .btn {
             display: inline-block;
             padding: 14px 30px;
-            background: white;
-            color: #1d4ed8;
+            background: #2563eb;
+            color: white;
             border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
             transition: 0.3s;
+            box-shadow: 0 8px 25px rgba(37,99,235,0.4);
         }
 
         .btn:hover {
-            transform: scale(1.05);
-            background: #dbeafe;
+            transform: translateY(-4px);
+            background: #3b82f6;
         }
 
-        /* Sections */
+        /* GENERAL SECTIONS */
         section {
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
         }
 
         section h2 {
-            font-size: 32px;
+            font-size: 36px;
             margin-bottom: 20px;
         }
 
-        section p {
-            max-width: 600px;
-            margin: auto;
-            line-height: 1.7;
-            color: #dbeafe;
+        section h2 span {
+            color: #60a5fa;
         }
 
-        /* Cards */
+        section > p {
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+
+        /* ABOUT */
+        .about-box {
+            max-width: 800px;
+            margin: 30px auto 0;
+            padding: 30px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* CARDS */
         .cards {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
-            margin-top: 30px;
+            margin-top: 40px;
         }
 
         .card {
-            background: rgba(255,255,255,0.12);
-            padding: 25px;
-            width: 250px;
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
+            width: 280px;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.13);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .card .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
         }
 
         .card h3 {
-            margin-bottom: 10px;
+            font-size: 22px;
+            margin-bottom: 12px;
         }
 
-        /* Footer */
+        .card p {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* SKILLS */
+        .skills {
+            max-width: 700px;
+            margin: 40px auto 0;
+        }
+
+        .skill {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #2563eb, #60a5fa);
+            border-radius: 20px;
+        }
+
+        /* CONTACT */
+        .contact-box {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 35px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .contact-box p {
+            margin: 15px 0;
+            color: #cbd5e1;
+        }
+
+        /* FOOTER */
         footer {
             text-align: center;
-            padding: 25px;
-            background: rgba(0,0,0,0.3);
-            margin-top: 30px;
+            padding: 30px 20px;
+            background: rgba(0,0,0,0.35);
+            color: #94a3b8;
         }
 
-        /* Mobile */
-        @media (max-width: 600px) {
-            .home h1 {
-                font-size: 34px;
+        footer span {
+            color: #60a5fa;
+        }
+
+        /* ANIMATION */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* MOBILE */
+        @media (max-width: 600px) {
 
             nav {
                 gap: 15px;
-                font-size: 14px;
+                padding: 15px 8px;
+                font-size: 13px;
+            }
+
+            .home {
+                min-height: 80vh;
+            }
+
+            .home h1 {
+                font-size: 38px;
+            }
+
+            .home p {
+                font-size: 17px;
+            }
+
+            section {
+                padding: 60px 15px;
+            }
+
+            section h2 {
+                font-size: 30px;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 330px;
             }
         }
     </style>
@@ -89,73 +276,210 @@
 
 <body>
 
-    <!-- Menu -->
+    <!-- NAVIGATION -->
     <nav>
         <a href="#home">Home</a>
         <a href="#about">About</a>
-        <a href="#services">Services</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
     </nav>
 
-    <!-- Home -->
+
+    <!-- HOME -->
     <div class="home" id="home">
-        <h1>Welcome to My Website</h1>
 
-        <p>
-            This is my personal website.
-            Welcome to my world!
-        </p>
+        <div class="home-content">
 
-        <a href="#about" class="btn">Explore More</a>
+            <h1>
+                Hi, I'm <span>Maien</span>
+            </h1>
+
+            <p>
+                Welcome to my personal website.
+                I am learning Web Development and
+                building my own projects.
+            </p>
+
+            <a href="#about" class="btn">
+                Explore My Website 🚀
+            </a>
+
+        </div>
+
     </div>
 
-    <!-- About -->
-    <section id="about">
-        <h2>About Me</h2>
 
-        <p>
-            Hello! I am learning web development.
-            This website is created using HTML and CSS.
-        </p>
+    <!-- ABOUT -->
+    <section id="about">
+
+        <h2>About <span>Me</span></h2>
+
+        <div class="about-box">
+
+            <p>
+                Hello! My name is Maien.
+                I am learning web development using HTML,
+                CSS and JavaScript.
+
+                I enjoy creating websites, learning new
+                technologies and building interesting projects.
+            </p>
+
+        </div>
+
     </section>
 
-    <!-- Services -->
-    <section id="services">
-        <h2>What I Do</h2>
+
+    <!-- SKILLS -->
+    <section id="skills">
+
+        <h2>My <span>Skills</span></h2>
+
+        <p>
+            These are the technologies I am currently learning.
+        </p>
+
+        <div class="skills">
+
+            <div class="skill">
+
+                <div class="skill-name">
+                    <span>HTML</span>
+                    <span>90%</span>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width:90%;"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-name">
+                    <span>CSS</span>
+                    <span>80%</span>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width:80%;"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-name">
+                    <span>JavaScript</span>
+                    <span>50%</span>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width:50%;"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="projects">
+
+        <h2>My <span>Projects</span></h2>
+
+        <p>
+            Here are some projects I am working on.
+        </p>
+
 
         <div class="cards">
 
             <div class="card">
-                <h3>🌐 Web Design</h3>
-                <p>I create beautiful websites.</p>
+
+                <div class="icon">🌐</div>
+
+                <h3>My Website</h3>
+
+                <p>
+                    My personal website created
+                    using HTML and CSS.
+                </p>
+
             </div>
 
-            <div class="card">
-                <h3>💻 Coding</h3>
-                <p>I am learning HTML, CSS and JavaScript.</p>
-            </div>
 
             <div class="card">
-                <h3>🚀 Projects</h3>
-                <p>I build new projects and learn new things.</p>
+
+                <div class="icon">💻</div>
+
+                <h3>Web Design</h3>
+
+                <p>
+                    I am learning how to create
+                    beautiful and responsive websites.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🚀</div>
+
+                <h3>Future Projects</h3>
+
+                <p>
+                    More exciting projects
+                    will be added here soon.
+                </p>
+
             </div>
 
         </div>
+
     </section>
 
-    <!-- Contact -->
+
+    <!-- CONTACT -->
     <section id="contact">
-        <h2>Contact</h2>
+
+        <h2>Contact <span>Me</span></h2>
+
+        <div class="contact-box">
+
+            <p>📧 Email: YourEmail@example.com</p>
+
+            <p>📱 Phone: Your Phone Number</p>
+
+            <p>🌐 Website: My Personal Website</p>
+
+            <br>
+
+            <a href="#home" class="btn">
+                Back to Top ↑
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
 
         <p>
-            Thanks for visiting my website!
+            © 2026 <span>Maien</span> |
+            All Rights Reserved.
         </p>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        © 2026 My Website
     </footer>
 
+
 </body>
-</html>
+        </html>
