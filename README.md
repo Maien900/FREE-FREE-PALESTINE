@@ -1,5 +1,4 @@
-   FREE-FREE-PALESTINE
-(I love Muhammad)-> and free free  Palestine❤️
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,9 +43,4 @@
 
     <h1>Welcome to My Website</h1>
 
-    <p>This is my first website.</p>
-
-    <button>Learn More</button>
-
-</body>
-</html>
+    <p>T
