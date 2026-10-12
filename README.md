@@ -1,159 +1,145 @@
+
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anime Energy Animation</title>
+<title>Neon Heart Animation</title>
 
 <style>
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  height: 100vh;
-  overflow: hidden;
-  background: radial-gradient(circle, #240617, #03030c 70%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial, sans-serif;
-  color: white;
+    background: #000;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
 }
 
-.scene {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+canvas {
+    display: block;
+    width: 100%;
+    height: 100vh;
 }
 
-.title {
-  position: absolute;
-  top: 10%;
-  font-size: 24px;
-  letter-spacing: 3px;
-  color: #ff416d;
-  text-shadow: 0 0 15px #ff174f;
-  animation: pulse 2s infinite alternate;
-}
-
-.ring {
-  width: 250px;
-  height: 250px;
-  position: relative;
-  border: 5px solid #ff174f;
-  border-radius: 50%;
-  box-shadow:
-    0 0 15px #ff174f,
-    0 0 40px #ff174f,
-    inset 0 0 25px #ff174f;
-  animation: rotate 5s linear infinite,
-             breathe 2s ease-in-out infinite alternate;
-}
-
-.ring::before,
-.ring::after {
-  content: "";
-  position: absolute;
-  inset: -17px;
-  border: 3px dashed #ff7597;
-  border-radius: 50%;
-  box-shadow: 0 0 20px #ff174f;
-}
-
-.ring::after {
-  inset: 12px;
-  border-color: #ff174f;
-  border-style: dotted;
-  animation: rotate 3s linear infinite reverse;
-}
-
-.core {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 75px;
-  filter: drop-shadow(0 0 20px #ff174f);
-  animation: float 2s ease-in-out infinite alternate;
-}
-
-.particle {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  background: #ff416d;
-  border-radius: 50%;
-  box-shadow: 0 0 12px 3px #ff174f;
-  animation: fly 3s linear infinite;
-}
-
-@keyframes rotate {
-  to { transform: rotate(360deg); }
-}
-
-@keyframes breathe {
-  from { scale: 0.94; }
-  to { scale: 1.05; }
-}
-
-@keyframes float {
-  from { transform: translateY(-8px); }
-  to { transform: translateY(8px); }
-}
-
-@keyframes pulse {
-  from { opacity: 0.5; }
-  to {
-    opacity: 1;
-    text-shadow: 0 0 25px #ff174f;
-  }
-}
-
-@keyframes fly {
-  0% {
-    transform: translateY(100px) scale(0);
-    opacity: 0;
-  }
-  50% { opacity: 1; }
-  100% {
-    transform: translateY(-220px) scale(1.8);
-    opacity: 0;
-  }
+h1 {
+    position: absolute;
+    top: 12%;
+    width: 100%;
+    text-align: center;
+    color: #00ff66;
+    font-size: 27px;
+    letter-spacing: 5px;
+    text-shadow: 0 0 10px #00ff66,
+                 0 0 25px #00ff66;
 }
 </style>
 </head>
 
 <body>
-<div class="scene">
-  <h1 class="title">ANIME ENERGY</h1>
 
-  <div class="ring">
-    <div class="core">⚡</div>
-  </div>
-</div>
+<h1>NEON HEART</h1>
+<canvas id="canvas"></canvas>
 
 <script>
-const scene = document.querySelector(".scene");
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
 
-for (let i = 0; i < 45; i++) {
-  const p = document.createElement("div");
-  p.className = "particle";
+let w, h, particles = [];
 
-  p.style.left = Math.random() * 100 + "%";
-  p.style.top = Math.random() * 100 + "%";
-  p.style.animationDelay = Math.random() * 3 + "s";
-  p.style.animationDuration = 2 + Math.random() * 3 + "s";
-
-  scene.appendChild(p);
+function resize() {
+    canvas.width = w = window.innerWidth;
+    canvas.height = h = window.innerHeight;
+    createParticles();
 }
+
+function heart(t) {
+    return {
+        x: 16 * Math.pow(Math.sin(t), 3),
+        y: -(13 * Math.cos(t)
+          - 5 * Math.cos(2*t)
+          - 2 * Math.cos(3*t)
+          - Math.cos(4*t))
+    };
+}
+
+function createParticles() {
+    particles = [];
+
+    for (let i = 0; i < 1000; i++) {
+        let t = Math.random() * Math.PI * 2;
+        let p = heart(t);
+
+        particles.push({
+            x: w / 2 + p.x * 12,
+            y: h / 2 + p.y * 12,
+            size: Math.random() * 2 + 0.5,
+            alpha: Math.random(),
+            speed: Math.random() * 0.04 + 0.01
+        });
+    }
+}
+
+let progress = 0;
+
+function animate() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.18)";
+    ctx.fillRect(0, 0, w, h);
+
+    const scale = Math.min(w, h) / 35;
+    const cx = w / 2;
+    const cy = h / 2;
+
+    // Glowing heart outline
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.scale(scale, scale);
+
+    ctx.beginPath();
+
+    for (let t = 0; t <= Math.PI * 2; t += 0.01) {
+        const p = heart(t);
+
+        if (t === 0) {
+            ctx.moveTo(p.x, p.y);
+        } else {
+            ctx.lineTo(p.x, p.y);
+        }
+    }
+
+    ctx.closePath();
+    ctx.strokeStyle = "#00ff66";
+    ctx.lineWidth = 0.25;
+    ctx.shadowBlur = 18;
+    ctx.shadowColor = "#00ff66";
+    ctx.stroke();
+    ctx.restore();
+
+    // Glowing particles
+    particles.forEach(p => {
+        p.alpha += p.speed;
+
+        if (p.alpha > 1) p.alpha = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0,255,100,${p.alpha})`;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = "#00ff66";
+        ctx.fill();
+    });
+
+    progress += 0.025;
+    requestAnimationFrame(animate);
+}
+
+window.addEventListener("resize", resize);
+resize();
+animate();
 </script>
+
 </body>
 </html>
