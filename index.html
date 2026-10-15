@@ -1,473 +1,192 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Animated Website</title>
 
-    <title>Maien | Personal Website</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+body {
+  min-height: 100vh;
+  background: #050816;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #020617, #0f172a, #1d4ed8);
-            color: white;
-            min-height: 100vh;
-        }
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 8%;
+  border-bottom: 1px solid #26304a;
+}
 
-        /* NAVBAR */
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding: 18px 15px;
-            background: rgba(2, 6, 23, 0.85);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
+.logo {
+  color: #00f5c4;
+  font-size: 22px;
+  font-weight: bold;
+}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 18px;
+  font-size: 14px;
+}
 
-        nav a:hover {
-            color: #60a5fa;
-        }
+.hero {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px 20px;
+  position: relative;
+}
 
-        /* HOME */
-        .home {
-            min-height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 50px 20px;
-        }
+.glow {
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  background: #00f5c4;
+  filter: blur(100px);
+  opacity: 0.22;
+  animation: pulse 3s infinite alternate;
+}
 
-        .home-content {
-            max-width: 800px;
-            animation: fadeIn 1.5s ease;
-        }
+h1 {
+  position: relative;
+  font-size: clamp(36px, 8vw, 68px);
+  margin-bottom: 18px;
+  animation: appear 1.2s ease;
+}
 
-        .home h1 {
-            font-size: 55px;
-            margin-bottom: 20px;
-        }
+h1 span {
+  color: #00f5c4;
+}
 
-        .home h1 span {
-            color: #60a5fa;
-        }
+.hero p {
+  color: #b9c4d9;
+  line-height: 1.8;
+  max-width: 500px;
+  animation: appear 1.8s ease;
+}
 
-        .home p {
-            font-size: 20px;
-            color: #cbd5e1;
-            line-height: 1.7;
-            margin-bottom: 30px;
-        }
+.btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 14px 26px;
+  background: #00f5c4;
+  color: #06111c;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: .3s;
+}
 
-        .btn {
-            display: inline-block;
-            padding: 14px 30px;
-            background: #2563eb;
-            color: white;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-            box-shadow: 0 8px 25px rgba(37,99,235,0.4);
-        }
+.btn:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 25px #00f5c4;
+}
 
-        .btn:hover {
-            transform: translateY(-4px);
-            background: #3b82f6;
-        }
+section.info {
+  padding: 60px 20px;
+  text-align: center;
+  background: #0b1120;
+}
 
-        /* GENERAL SECTIONS */
-        section {
-            padding: 80px 20px;
-            text-align: center;
-        }
+.info h2 {
+  color: #00f5c4;
+  margin-bottom: 18px;
+}
 
-        section h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
+.info p {
+  max-width: 600px;
+  margin: auto;
+  color: #b9c4d9;
+  line-height: 1.8;
+}
 
-        section h2 span {
-            color: #60a5fa;
-        }
+footer {
+  padding: 25px 12px;
+  text-align: center;
+  color: #a6b1c6;
+  font-size: 13px;
+}
 
-        section > p {
-            max-width: 650px;
-            margin: auto;
-            line-height: 1.8;
-            color: #cbd5e1;
-        }
+@keyframes pulse {
+  from { transform: scale(.8); opacity: .12; }
+  to { transform: scale(1.3); opacity: .32; }
+}
 
-        /* ABOUT */
-        .about-box {
-            max-width: 800px;
-            margin: 30px auto 0;
-            padding: 30px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-        }
+@keyframes appear {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-        /* CARDS */
-        .cards {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        .card {
-            width: 280px;
-            padding: 30px 20px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            transition: 0.4s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            background: rgba(255,255,255,0.13);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-        }
-
-        .card .icon {
-            font-size: 45px;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            font-size: 22px;
-            margin-bottom: 12px;
-        }
-
-        .card p {
-            color: #cbd5e1;
-            line-height: 1.6;
-        }
-
-        /* SKILLS */
-        .skills {
-            max-width: 700px;
-            margin: 40px auto 0;
-        }
-
-        .skill {
-            margin-bottom: 25px;
-            text-align: left;
-        }
-
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-
-        .skill-bar {
-            height: 10px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(90deg, #2563eb, #60a5fa);
-            border-radius: 20px;
-        }
-
-        /* CONTACT */
-        .contact-box {
-            max-width: 600px;
-            margin: 30px auto;
-            padding: 35px;
-            background: rgba(255,255,255,0.08);
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .contact-box p {
-            margin: 15px 0;
-            color: #cbd5e1;
-        }
-
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            background: rgba(0,0,0,0.35);
-            color: #94a3b8;
-        }
-
-        footer span {
-            color: #60a5fa;
-        }
-
-        /* ANIMATION */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* MOBILE */
-        @media (max-width: 600px) {
-
-            nav {
-                gap: 15px;
-                padding: 15px 8px;
-                font-size: 13px;
-            }
-
-            .home {
-                min-height: 80vh;
-            }
-
-            .home h1 {
-                font-size: 38px;
-            }
-
-            .home p {
-                font-size: 17px;
-            }
-
-            section {
-                padding: 60px 15px;
-            }
-
-            section h2 {
-                font-size: 30px;
-            }
-
-            .card {
-                width: 100%;
-                max-width: 330px;
-            }
-        }
-    </style>
+@media (max-width: 480px) {
+  nav { padding: 18px 5%; }
+  .logo { font-size: 17px; }
+  nav a { margin-left: 8px; font-size: 12px; }
+}
+</style>
 </head>
 
 <body>
-
-    <!-- NAVIGATION -->
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <!-- HOME -->
-    <div class="home" id="home">
-
-        <div class="home-content">
-
-            <h1>
-                Hi, I'm <span>Maien</span>
-            </h1>
-
-            <p>
-                Welcome to my personal website.
-                I am learning Web Development and
-                building my own projects.
-            </p>
-
-            <a href="#about" class="btn">
-                Explore My Website 🚀
-            </a>
-
-        </div>
-
-    </div>
-
-    <!-- ABOUT -->
-    <section id="about">
-
-        <h2>About <span>Me</span></h2>
-
-        <div class="about-box">
-
-            <p>
-                Hello! My name is Maien.
-                I am learning web development using HTML,
-                CSS and JavaScript.
-
-                I enjoy creating websites, learning new
-                technologies and building interesting projects.
-            </p>
-
-        </div>
-
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills">
-
-        <h2>My <span>Skills</span></h2>
-
-        <p>
-            These are the technologies I am currently learning.
-        </p>
-
-        <div class="skills">
-
-            <div class="skill">
-
-                <div class="skill-name">
-                    <span>HTML</span>
-                    <span>90%</span>
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width:90%;"></div>
-                </div>
-
-            </div>
-
-            <div class="skill">
-
-                <div class="skill-name">
-                    <span>CSS</span>
-                    <span>80%</span>
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width:80%;"></div>
-                </div>
-
-            </div>
-
-            <div class="skill">
-
-                <div class="skill-name">
-                    <span>JavaScript</span>
-                    <span>50%</span>
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width:50%;"></div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-
-        <h2>My <span>Projects</span></h2>
-
-        <p>
-            Here are some projects I am working on.
-        </p>
-
-        <div class="cards">
-
-            <div class="card">
-
-                <div class="icon">🌐</div>
-
-                <h3>My Website</h3>
-
-                <p>
-                    My personal website created
-                    using HTML and CSS.
-                </p>
-
-            </div>
-
-            <div class="card">
-
-                <div class="icon">💻</div>
-
-                <h3>Web Design</h3>
-
-                <p>
-                    I am learning how to create
-                    beautiful and responsive websites.
-                </p>
-
-            </div>
-
-            <div class="card">
-
-                <div class="icon">🚀</div>
-
-                <h3>Future Projects</h3>
-
-                <p>
-                    More exciting projects
-                    will be added here soon.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-
-        <h2>Contact <span>Me</span></h2>
-
-        <div class="contact-box">
-
-            <p>📧 Email: YourEmail@example.com</p>
-
-            <p>📱 Phone: Your Phone Number</p>
-
-            <p>🌐 Website: My Personal Website</p>
-
-            <br>
-
-            <a href="#home" class="btn">
-                Back to Top ↑
-            </a>
-
-        </div>
-
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-
-        <p>
-            © 2026 <span>Maien</span> |
-            All Rights Reserved.
-        </p>
-
-    </footer>
-
+<nav>
+  <div class="logo">MY WEBSITE</div>
+  <div>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+  </div>
+</nav>
+
+<main>
+  <section class="hero" id="home">
+    <div class="glow"></div>
+    <h1>Welcome to <span>My World</span></h1>
+    <p>
+      Explore my creative world.
+      Beautiful design, smooth animations,
+      and a website made with HTML, CSS and JavaScript.
+    </p>
+    <a href="#about" class="btn">Explore More ↗</a>
+  </section>
+
+  <section class="info" id="about">
+    <h2>About My Website</h2>
+    <p>
+      This is my personal website project.
+      I am learning web development and creating
+      amazing things using code.
+    </p>
+    <button class="btn" onclick="showMessage()">
+      Click Me
+    </button>
+    <p id="message" style="margin-top:20px"></p>
+  </section>
+</main>
+
+<footer>
+  Made with ❤️ using HTML, CSS & JavaScript
+</footer>
+
+<script>
+function showMessage() {
+  document.getElementById("message").textContent =
+    "Hello! Thanks for visiting my website! ✨";
+}
+</script>
 </body>
-</html>
+    </html>
