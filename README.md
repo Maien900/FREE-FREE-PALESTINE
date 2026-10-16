@@ -12,7 +12,7 @@ body{
   justify-content:center;align-items:center;
   overflow:hidden;padding:20px;
 }
-.scene{
+.scene
   width:min(900px,100%);min-height:510px;
   display:grid;grid-template-columns:1fr 1fr;
   align-items:center;gap:25px;position:relative;
